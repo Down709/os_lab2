@@ -57,7 +57,7 @@ do
     fi
 done
 
- cp directory-info.new directory-info.last
+ ls -l "$dir" > directory-info.last
 fi
 
 echo "source directory: $dir"
