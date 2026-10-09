@@ -3,6 +3,13 @@
 dir=$1
 mDir=$2
 
+exec 200>antivirus.lock
+if ! flock -n 200
+then
+    echo "antiveiruse is alredy running"
+    exit 1
+fi
+
 if [ $# -ne 2 ]
 then
     echo "2 arguments are needed"

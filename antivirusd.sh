@@ -4,6 +4,13 @@ dir=$1
 mDir=$2
 intervals=$3
 
+exec 200>antivirus.lock
+if ! flock -n 200
+then
+    echo "restore is alredy running"
+    exit 1
+fi
+
 if [ $# -ne 3 ]
 then
  echo "3 arguments are required"
